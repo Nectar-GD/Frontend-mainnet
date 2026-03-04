@@ -31,7 +31,7 @@ const Pools = () => {
     <div className="min-h-screen bg-white">
       <main>
         <div className="mb-5 sm:mb-6 md:mb-8">
-          <h1 className="text-2xl sm:text-4xl md:text-5xl font-bold text-[#252B36] mb-1">
+          <h1 className="lg:text-[32px] md:text-[28px] text-[24px] font-bold text-[#252B36] mb-1">
             Bloom
           </h1>
           <p className="text-xs sm:text-sm md:text-base text-gray-700">

@@ -22,13 +22,10 @@ interface PoolActionFormProps {
   tokenAddress: `0x${string}`;
   poolState: number;
   isMember: boolean;
-  /** Display rate from calculateJoinRate — shown to user */
   joinRate: bigint;
-  /** targetAmount / maxMembers — used for approval ceiling */
   perMember: bigint;
   assignedRate: bigint;
   claimableAmount: bigint;
-  /** Total user has paid so far (for emergency withdraw display) */
   totalPaid: bigint;
   frequencyUnit: string;
   userAddress?: `0x${string}`;
@@ -51,7 +48,6 @@ export default function PoolActionForm({
 }: PoolActionFormProps) {
   const [showWithdrawConfirm, setShowWithdrawConfirm] = useState(false);
 
-  // ── Four hooks ──
   const {
     join,
     step: joinStep,
@@ -93,7 +89,6 @@ export default function PoolActionForm({
     error: withdrawError,
   } = useEmergencyWithdraw(poolAddress);
 
-  // ── Aggregated state ──
   const isLoading = joinLoading || depositLoading || claimLoading || withdrawLoading;
   const isSuccess = joinSuccess || depositSuccess || claimSuccess || withdrawSuccess;
   const error = joinError || depositError || claimError || withdrawError;
