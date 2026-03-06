@@ -4,11 +4,9 @@ import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { useState } from "react";
-import { useAppKitAccount } from "@reown/appkit/react";
 
 export default function NavBar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const { isConnected } = useAppKitAccount();
 
   return (
     <div className="bg-white ">
@@ -19,7 +17,6 @@ export default function NavBar() {
         className="w-[90%] mx-auto relative z-50 border-b border-gray-300 py-8"
       >
         <div className="flex items-center justify-between">
-          {/* Logo */}
           <div className="flex items-center">
             <Image
               src="/logo.png"
