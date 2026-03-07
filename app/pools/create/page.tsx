@@ -33,6 +33,7 @@ const DISTRIBUTION_OPTIONS = [
 
 const Create = () => {
   const [formData, setFormData] = useState({
+    name: "",
     targetAmount: "",
     maxMembers: "",
     totalCycles: "",
@@ -68,7 +69,7 @@ const Create = () => {
     return {
       perMemberTotal: perMember.toFixed(2),
       baseContribution: perCycle.toFixed(2),
-      unit: freqOption?.unit?.slice(0, -1) || "cycle", // "day", "week", "month"
+      unit: freqOption?.unit?.slice(0, -1) || "cycle",
       totalDuration: `${cycles} ${freqOption?.unit || "cycles"}`,
     };
   }, [formData.targetAmount, formData.maxMembers, formData.totalCycles, frequency]);
@@ -76,6 +77,7 @@ const Create = () => {
   useEffect(() => {
     if (isSuccess) {
       setFormData({
+        name: "",
         targetAmount: "",
         maxMembers: "",
         totalCycles: "",
@@ -99,6 +101,10 @@ const Create = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
+    if (!formData.name.trim()) {
+      toast.error("Please enter a pool name");
+      return;
+    }
     if (!selectedToken) {
       toast.error("Please select a token");
       return;
@@ -135,6 +141,7 @@ const Create = () => {
     }
 
     const poolData: CreatePoolFormData = {
+      name: formData.name.trim(),
       token: selectedToken as `0x${string}`,
       targetAmount: formData.targetAmount,
       maxMembers: parseInt(formData.maxMembers),
@@ -166,6 +173,18 @@ const Create = () => {
         onSubmit={handleSubmit}
         className="w-full lg:w-[80%] md:w-[80%] mx-auto my-8 space-y-6"
       >
+        {/* ── Pool Name (full width) ── */}
+        <div className="mb-4">
+          <label className="text-[14px] font-medium block mb-1">Pool Name</label>
+          <input
+            type="text"
+            placeholder="Give your pool a name"
+            value={formData.name}
+            onChange={(e) => handleInputChange("name", e.target.value)}
+            className="p-3 border border-[#252B36]/30 block w-full text-xs rounded-lg"
+          />
+        </div>
+
         <div className="flex justify-between w-full flex-wrap lg:flex-row md:flex-row flex-col gap-4">
           <div className="mb-4 w-full lg:w-[48%] md:w-[48%]">
             <label className="text-[14px] font-medium block mb-1">Token</label>
@@ -232,7 +251,6 @@ const Create = () => {
           </div>
         </div>
 
-    
         <div className="flex justify-between w-full flex-wrap lg:flex-row md:flex-row flex-col gap-4">
           <div className="mb-4 w-full lg:w-[48%] md:w-[48%]">
             <label className="text-[14px] font-medium block mb-1">
@@ -303,7 +321,6 @@ const Create = () => {
           </div>
         </div>
 
-       
         <div className="mb-4">
           <label className="text-[14px] font-medium block mb-2">
             Distribution Mode

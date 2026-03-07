@@ -28,6 +28,7 @@ export enum ContributionFrequency {
 }
 
 export interface CreatePoolFormData {
+  name: string;
   token: `0x${string}`;
   targetAmount: string;
   maxMembers: number;
@@ -109,6 +110,7 @@ export function useCreatePool() {
       const targetAmount = parseUnits(formData.targetAmount, tokenDecimals);
 
       const config = {
+        name: formData.name,
         token: formData.token,
         targetAmount,
         maxMembers: formData.maxMembers,

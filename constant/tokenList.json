@@ -1,9 +1,9 @@
 {
-    "0x318AB69A8dCf27a6F49e56E32B5a0c4FD302c23E": {
+    "0xcebA9300f2b948710d2653dD7B07f33A8B32118C": {
         "name": "USDC",
         "symbol": "USDC",
         "decimals": 6,
-        "address": "0x318AB69A8dCf27a6F49e56E32B5a0c4FD302c23E",
+        "address": "0xcebA9300f2b948710d2653dD7B07f33A8B32118C",
         "yieldadapter": "0xA35d432790a1C76f1194eFC7672e1884C1876720",
         "yieldAdapter name": "MockAave"
     },

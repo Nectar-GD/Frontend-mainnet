@@ -55,6 +55,7 @@
         "type": "tuple",
         "internalType": "struct INectarPool.PoolConfig",
         "components": [
+          { "name": "name", "type": "string", "internalType": "string" },
           { "name": "token", "type": "address", "internalType": "address" },
           {
             "name": "targetAmount",
@@ -311,6 +312,13 @@
     "name": "OwnableInvalidOwner",
     "inputs": [
       { "name": "owner", "type": "address", "internalType": "address" }
+    ]
+  },
+  {
+    "type": "error",
+    "name": "OwnableUnauthorizedAccount",
+    "inputs": [
+      { "name": "account", "type": "address", "internalType": "address" }
     ]
   }
 ]
