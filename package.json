@@ -9,10 +9,11 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@goodsdks/citizen-sdk": "^1.2.3",
+    "@goodsdks/identity-sdk": "^1.0.5",
     "@reown/appkit": "^1.8.17",
     "@reown/appkit-adapter-wagmi": "^1.8.17",
     "@tanstack/react-query": "^5.90.20",
-    "@worldcoin/idkit": "^4.0.5",
     "framer-motion": "^12.29.2",
     "lucide-react": "^0.563.0",
     "next": "16.1.6",
@@ -33,6 +34,7 @@
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "16.1.6",
+    "lightningcss": "^1.31.1",
     "tailwindcss": "^4",
     "typescript": "^5"
   }

@@ -1,7 +1,7 @@
 'use client';
 
-import { useVerificationStatus } from '@/hooks/useVerificationStatus';
-import { Loader2, ShieldAlert } from 'lucide-react';
+import { useIdentity } from '@/hooks/useIdentity';
+import { Loader2, ShieldAlert, ExternalLink } from 'lucide-react';
 import Link from 'next/link';
 
 interface VerificationGuardProps {
@@ -10,12 +10,12 @@ interface VerificationGuardProps {
 }
 
 export function VerificationGuard({ children, fallback }: VerificationGuardProps) {
-  const { isVerified, isLoading } = useVerificationStatus();
+  const { isVerified, isLoading } = useIdentity();
 
   if (isLoading) {
     return (
       <div className="flex items-center justify-center p-6">
-        <Loader2 className="w-6 h-6 animate-spin text-blue-600" />
+        <Loader2 className="w-6 h-6 animate-spin text-green-600" />
       </div>
     );
   }
@@ -30,12 +30,14 @@ export function VerificationGuard({ children, fallback }: VerificationGuardProps
           Verification Required
         </h3>
         <p className="text-sm text-gray-600 mb-4">
-          You must verify your identity with World ID before you can join any savings pool
+          You must verify your identity with GoodDollar Face Verification before
+          you can join any savings pool.
         </p>
         <Link
           href="/verify"
-          className="inline-block px-6 py-3 bg-[#FFC000] text-[#252B36] rounded-lg font-bold hover:bg-[#FFD14D] transition-colors"
+          className="inline-flex items-center gap-2 px-6 py-3 bg-[#FFC000] text-[#252B36] rounded-lg font-bold hover:bg-[#FFD14D] transition-colors"
         >
+          <ExternalLink className="w-4 h-4" />
           Verify Now
         </Link>
       </div>
